@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Dark Tech Theme */
+
+@layer base {
+  :root {
+    /* Modern Dark Portfolio Theme */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 355 7% 97%;
+
+    --secondary: 240 4.8% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5.9% 10%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 12 76% 61%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 15%;
+    --input: 240 5.9% 10%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+
+    /* Modern Portfolio Specific Colors */
+    --tech-blue: 199 89% 48%;
+    --tech-purple: 271 91% 65%;
+    --tech-green: 142 76% 36%;
+    --tech-orange: 25 95% 53%;
+    --surface: 240 10% 6%;
+    --surface-alt: 240 6% 10%;
+    --surface-glass: 240 10% 6% / 0.8;
+
+    /* Modern Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(199 89% 48%) 50%, hsl(271 91% 65%) 100%);
+    --gradient-surface: linear-gradient(145deg, hsl(240 10% 6%) 0%, hsl(240 6% 10%) 100%);
+    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(142 76% 36% / 0.15), transparent 60%);
+    --gradient-card: linear-gradient(145deg, hsl(240 10% 6% / 0.9), hsl(240 6% 10% / 0.9));
+    --gradient-glow: conic-gradient(from 230.29deg at 51.63% 52.16%, hsl(142 76% 36% / 0.2) 0deg, hsl(199 89% 48% / 0.2) 67.5deg, hsl(271 91% 65% / 0.2) 198.75deg, hsl(142 76% 36% / 0.2) 251.25deg, hsl(199 89% 48% / 0.2) 301.88deg, hsl(271 91% 65% / 0.2) 360deg);
+
+    /* Enhanced Shadows */
+    --shadow-glow: 0 0 50px hsl(142 76% 36% / 0.4);
+    --shadow-card: 0 8px 32px hsl(240 10% 3.9% / 0.12);
+    --shadow-floating: 0 25px 50px -12px hsl(240 10% 3.9% / 0.25);
+    --shadow-neon: 0 0 30px hsl(199 89% 48% / 0.6);
+    --shadow-purple: 0 0 30px hsl(271 91% 65% / 0.6);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bouncy: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* No light mode needed - portfolio uses dark theme */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    background-image: var(--gradient-hero);
+    background-attachment: fixed;
+    cursor: none;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/70;
+  }
+}
+
+@layer components {
+  /* Floating animations */
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating:nth-child(2) {
+    animation-delay: -2s;
+  }
+
+  .floating:nth-child(3) {
+    animation-delay: -4s;
+  }
+
+  /* Glow effects */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-on-hover {
+    transition: var(--transition-smooth);
+  }
+
+  .glow-on-hover:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Backdrop blur */
+  .backdrop-glass {
+    @apply backdrop-blur-sm bg-surface/80 border border-border/50;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
